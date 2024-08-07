@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class ServicePhoto extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'service_id', 'photo_path',
+    ];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('services', function (Blueprint $table) {
-            $table->id();
+            $table->id();            
+            $table->foreignId('technician_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('client_id')->constrained('users')->cascadeOnDelete();
+            $table->dateTime('fecha_servicio');
+            $table->enum('status', ['pending', 'in_progress', 'completed', 'cancelled']);
             $table->timestamps();
         });
     }

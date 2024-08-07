@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceRating extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'service_id', 'rating', 'comment',
+    ];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('service_ratings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
+            $table->integer('rating');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

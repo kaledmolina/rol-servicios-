@@ -31,6 +31,20 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function createdServices()
+    {
+        return $this->hasMany(Service::class, 'created_by');
+    }
+
+    public function assignedServices()
+    {
+        return $this->hasMany(Service::class, 'technician_id');
+    }
+
+    public function clientServices()
+    {
+        return $this->hasMany(Service::class, 'client_id');
+    }
 
     /**
      * Get the attributes that should be cast.
